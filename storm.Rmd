@@ -1,0 +1,66 @@
+---
+title: 'Impact of Storm On Population Health and Economy'
+output:
+  html_document:
+    keep_md: yes
+    toc: yes
+    toc_theme: united
+---
+
+# Overview  
+
+
+
+# Pre-Processing  
+
+```{r environment_setup,echo=FALSE}
+knitr::opts_chunk$set(
+  cache=TRUE
+  ,fig.path="figure/"
+  ,fig.width=12
+  )
+
+setwd("/Users/bradychiu/Dropbox (Uber Technologies)/R/Coursera/05_Reproducible_Research/Assignment2/PeerAssessment2")
+
+library(dplyr,warn.conflicts=F)
+library(ggplot2,warn.conflicts=F)
+library(lubridate,warn.conflicts=F)
+library(knitr,warn.conflicts=F)
+library(tidyr,warn.conflicts=F)
+
+sessionInfo()
+```
+
+## Data Load  
+
+* Download source data file and load  
+
+```{r data_setup}
+if(!dir.exists("data/")) dir.create("data/")
+if(!file.exists("data/storm.bz2")) download.file("https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2","data/storm.bz2")
+storm_data<-read.csv("data/storm.bz2")
+```
+
+
+
+
+
+Across the United States, which types of events (as indicated in the 𝙴𝚅𝚃𝚈𝙿𝙴 variable) are most harmful with respect to population health?  
+
+```{r pop_health_data}
+
+```
+
+```{r pop_health_plot,echo=FALSE}
+
+```
+
+Across the United States, which types of events have the greatest economic consequences?  
+
+```{r econ_data}
+
+```
+
+```{r econ_plot,echo=FALSE}
+
+```
