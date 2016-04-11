@@ -13,7 +13,7 @@ Our project aims to answer the following questions:
 # Data Processing  
 
 * Configure our document settings  
-* Load the necessary packages required for our analyses  
+* Load the necessary packages required for our analysis   
 * Validate our environment setup  
 
 
@@ -70,7 +70,7 @@ storm_data<-read.csv("data/storm.bz2",stringsAsFactors=F)
 colnames(storm_data)<-tolower(names(storm_data))
 ```
 
-* Filter for data that is relevant to our analyses  
+* Filter for data that is relevant to our analysis  
 * Map exponents of property and crop damage to numeric values  
 * Clean up event type names  
 
@@ -133,9 +133,63 @@ storm_data_clean<-storm_data %>%
 
 * We analyze our data to get number of fatalities by event type  
 
+
+```r
+ggplot(
+  storm_data_clean %>%
+    filter(fatalities>0) %>%
+    top_n(10,fatalities) %>%
+    mutate(
+      evtype=toTitleCase(evtype)
+      ,evtype=factor(evtype,levels=evtype[order(fatalities,decreasing=T)])
+      )
+  ,aes(x=evtype,y=fatalities,fill=evtype)
+  )+
+  geom_bar(stat="identity")+
+  ggtitle("Fatalities (Top 10 Event Types)")+
+  geom_label(aes(label=fatalities))+
+  scale_fill_discrete(name="Event Type")+
+  scale_x_discrete(name="Event Type")+
+  scale_y_continuous(name="Fatalities")+
+  theme(
+    plot.title=element_text(face="bold",size=16)
+    ,axis.title=element_text(face="bold",size=14)
+    ,axis.text=element_text(size=12)
+    ,legend.text=element_text(size=10)
+    ,strip.text=element_text(size=12)
+    )
+```
+
 ![](figure/fatalities-1.png)
 
 * We analyze our data to get number of injuries by event type  
+
+
+```r
+ggplot(
+  storm_data_clean %>%
+    filter(injuries>0) %>%
+    top_n(10,injuries) %>%
+    mutate(
+      evtype=toTitleCase(evtype)
+      ,evtype=factor(evtype,levels=evtype[order(injuries,decreasing=T)])
+      )
+  ,aes(x=evtype,y=injuries,fill=evtype)
+  )+
+  geom_bar(stat="identity")+
+  ggtitle("Injuries (Top 10 Event Types)")+
+  geom_label(aes(label=injuries))+
+  scale_fill_discrete(name="Event Type")+
+  scale_x_discrete(name="Event Type")+
+  scale_y_continuous(name="Injuries")+
+  theme(
+    plot.title=element_text(face="bold",size=16)
+    ,axis.title=element_text(face="bold",size=14)
+    ,axis.text=element_text(size=12)
+    ,legend.text=element_text(size=10)
+    ,strip.text=element_text(size=12)
+    )
+```
 
 ![](figure/injuries-1.png)
 
@@ -186,7 +240,7 @@ ggplot(
 
 # Results  
 
-Our analyses show the following:  
+Our analysis shows the following:  
 
 1. Across the United States, which types of events are most harmful with respect to population health?  
 

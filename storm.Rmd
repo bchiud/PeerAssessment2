@@ -1,10 +1,13 @@
 ---
-title: 'Impact of Storm On Population Health and Economy'
+title: "Impact of Storm On Population Health and Economy"
 output:
   html_document:
     keep_md: yes
+    number_sections: yes
     toc: yes
     toc_theme: united
+  pdf_document:
+    toc: yes
 ---
 
 # Synopsis
@@ -20,7 +23,7 @@ Our project aims to answer the following questions:
 # Data Processing  
 
 * Configure our document settings  
-* Load the necessary packages required for our analyses  
+* Load the necessary packages required for our analysis   
 * Validate our environment setup  
 
 ```{r environment_setup}
@@ -51,7 +54,7 @@ storm_data<-read.csv("data/storm.bz2",stringsAsFactors=F)
 colnames(storm_data)<-tolower(names(storm_data))
 ```
 
-* Filter for data that is relevant to our analyses  
+* Filter for data that is relevant to our analysis  
 * Map exponents of property and crop damage to numeric values  
 * Clean up event type names  
 
@@ -113,7 +116,7 @@ storm_data_clean<-storm_data %>%
 
 * We analyze our data to get number of fatalities by event type  
 
-```{r fatalities,echo=FALSE}
+```{r fatalities}
 ggplot(
   storm_data_clean %>%
     filter(fatalities>0) %>%
@@ -141,7 +144,7 @@ ggplot(
 
 * We analyze our data to get number of injuries by event type  
 
-```{r injuries,echo=FALSE}
+```{r injuries}
 ggplot(
   storm_data_clean %>%
     filter(injuries>0) %>%
@@ -211,7 +214,7 @@ ggplot(
 
 # Results  
 
-Our analyses show the following:  
+Our analysis shows the following:  
 
 1. Across the United States, which types of events are most harmful with respect to population health?  
 
