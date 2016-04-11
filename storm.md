@@ -155,6 +155,7 @@ ggplot(
     plot.title=element_text(face="bold",size=16)
     ,axis.title=element_text(face="bold",size=14)
     ,axis.text=element_text(size=12)
+    ,legend.position="none"
     ,legend.text=element_text(size=10)
     ,strip.text=element_text(size=12)
     )
@@ -186,6 +187,7 @@ ggplot(
     plot.title=element_text(face="bold",size=16)
     ,axis.title=element_text(face="bold",size=14)
     ,axis.text=element_text(size=12)
+    ,legend.position="none"
     ,legend.text=element_text(size=10)
     ,strip.text=element_text(size=12)
     )
